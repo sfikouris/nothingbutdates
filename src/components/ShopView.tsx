@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Trash2, Plus, Minus, Check, Sparkles, Leaf, ShoppingCart, ArrowRight } from 'lucide-react';
 import { BOX_OPTIONS, INGREDIENTS_LIST, NUTRITION_FACTS, IMAGES } from '../data';
 import { SelectedItem, BoxOption, ViewName } from '../types';
+import datesPackImage from '../assets/datespack.jpeg';
 
 interface ShopViewProps {
   cart: SelectedItem[];
@@ -14,7 +15,7 @@ interface ShopViewProps {
 export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onViewChange }: ShopViewProps) {
   // Current user customizer configuration (before clicking "Add to Selection")
   const [selectedBoxId, setSelectedBoxId] = useState<string>('box-500g');
-  const [barQty, setBarQty] = useState<number>(1);
+  const [barQty, setBarQty] = useState<number>(0);
   const [activeTab, setActiveTab] = useState<'ingredients' | 'nutrition'>('ingredients');
   const [successToast, setSuccessToast] = useState<string | null>(null);
 
@@ -42,7 +43,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
     if (barQty > 0) {
       onAddBars(barQty);
       addedCount += barQty;
-      setBarQty(1); // reset qty counter for bars
+      setBarQty(0); // reset qty counter for bars
     }
 
     triggerToast(`Added ${addedCount > 1 ? 'items' : 'item'} successfully to selection!`);
@@ -98,7 +99,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
             {/* Left Image aspect */}
             <div className="md:col-span-5 rounded-xl overflow-hidden aspect-square self-center shadow-inner border border-gray-100">
               <img
-                src={IMAGES.kitchen_bars}
+                src={datesPackImage}
                 alt="Box of Tahini Nut Bites closeup"
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
