@@ -1,0 +1,6 @@
+{
+  "name": "Nothing But Dates",
+  "description": "An artisanal date provisions boutique highlighting small-batch hand-rolled date energy bites and premium ingredients.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
