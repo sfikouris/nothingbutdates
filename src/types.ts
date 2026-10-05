@@ -24,4 +24,4 @@ export interface OrderDetails {
   specialRequests: string;
 }
 
-export type ViewName = 'story' | 'shop' | 'checkout';
+export type ViewName = 'shop' | 'checkout';

@@ -108,7 +108,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
   const handleResetOrder = () => {
     onClearCart();
     setSuccessOrder(false);
-    onViewChange('story');
+    onViewChange('shop');
   };
 
   // SUCCESS CONFIRMATION DRAWER/VIEW
@@ -200,7 +200,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
             onClick={handleResetOrder}
             className="px-8 py-3 bg-stone-900 hover:bg-stone-850 text-white rounded font-sans text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1 cursor-pointer"
           >
-            Our Story & Main Page
+            Back to Shop
           </button>
         </div>
 

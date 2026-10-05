@@ -15,7 +15,7 @@ export default function Navbar({ currentView, onViewChange, cart }: NavbarProps)
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Brand Logo & Name */}
         <button
-          onClick={() => onViewChange('story')}
+          onClick={() => onViewChange('shop')}
           className="flex items-center gap-2.5 group cursor-pointer text-left"
           id="nav-logo"
         >
@@ -38,21 +38,6 @@ export default function Navbar({ currentView, onViewChange, cart }: NavbarProps)
           >
             Shop
             {currentView === 'shop' && (
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-medjool-amber" />
-            )}
-          </button>
-          
-          <button
-            onClick={() => onViewChange('story')}
-            className={`font-sans text-xs uppercase tracking-wider font-semibold transition-all py-1 relative cursor-pointer ${
-              currentView === 'story'
-                ? 'text-medjool-amber'
-                : 'text-stone-400 hover:text-stone-800'
-            }`}
-            id="nav-story-btn"
-          >
-            Our Story
-            {currentView === 'story' && (
               <span className="absolute bottom-0 left-0 w-full h-[1px] bg-medjool-amber" />
             )}
           </button>

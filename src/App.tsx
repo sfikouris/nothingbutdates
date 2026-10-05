@@ -11,35 +11,13 @@
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import StoryView from './components/StoryView';
 import ShopView from './components/ShopView';
 import CheckoutView from './components/CheckoutView';
 import { ViewName, SelectedItem, BoxOption } from './types';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<ViewName>('story');
-  
-  // Initialize with some dummy preloaded items to perfectly match "Screen 2" and "Screen 3" from the user request
-  const [cart, setCart] = useState<SelectedItem[]>([
-    {
-      id: 'box-750g',
-      name: 'Tahini Nut Bites - 750g Box',
-      type: 'box',
-      weight: 'Approx. 26 pieces',
-      qty: 1,
-      priceSingle: 34.0,
-      priceTotal: 34.0
-    },
-    {
-      id: 'individual-bar',
-      name: 'Individual Bars',
-      type: 'bar',
-      weight: '40G SNACK BAR',
-      qty: 2,
-      priceSingle: 3.5,
-      priceTotal: 7.0
-    }
-  ]);
+  const [currentView, setCurrentView] = useState<ViewName>('shop');
+  const [cart, setCart] = useState<SelectedItem[]>([]);
 
   // Scroll to top on page transition for smooth seamless feel
   useEffect(() => {
@@ -121,10 +99,6 @@ export default function App() {
 
       {/* CORE SCREENS DISPATCH ROUTER */}
       <main className="flex-1">
-        {currentView === 'story' && (
-          <StoryView onViewChange={setCurrentView} />
-        )}
-
         {currentView === 'shop' && (
           <ShopView
             cart={cart}
@@ -150,4 +124,3 @@ export default function App() {
     </div>
   );
 }
-
