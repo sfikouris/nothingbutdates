@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Info, ShieldCheck, Heart, Eye, Printer, Mail, ChevronLeft, Award, Sparkles, AlertCircle } from 'lucide-react';
 import { SelectedItem, OrderDetails, ViewName } from '../types';
+import { submitOrder } from '../submitOrder';
 
 interface CheckoutViewProps {
   cart: SelectedItem[];
@@ -22,6 +23,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
   const [successOrder, setSuccessOrder] = useState<boolean>(false);
   const [successOrderNum, setSuccessOrderNum] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submissionError, setSubmissionError] = useState('');
 
   const subtotal = cart.reduce((acc, item) => acc + item.priceTotal, 0);
   const shippingFee = subtotal >= 30 ? 0.0 : 4.5;
@@ -60,45 +62,29 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
 
   const handleOrderSubmission = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting || cart.length === 0) return;
     if (validateForm()) {
       setIsSubmitting(true);
+      setSubmissionError('');
       
-      const orderNum = `NBD-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+      const orderNum = `NBD-${new Date().getFullYear()}-${crypto.randomUUID()}`;
       
       try {
-        const response = await fetch("/api/order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            fullName: formData.fullName,
-            telephone: formData.telephone,
-            email: formData.email,
-            pickupDate: formData.pickupDate,
-            specialRequests: formData.specialRequests,
-            cart,
-            subtotal,
-            shippingFee,
-            grandTotal,
-            orderNumber: orderNum
-          })
+        await submitOrder(import.meta.env.VITE_ORDER_FORM_ENDPOINT || 'https://formspree.io/f/mljgereb', {
+          ...formData,
+          cart,
+          subtotal,
+          shippingFee,
+          grandTotal,
+          orderNumber: orderNum,
         });
-
-        if (!response.ok) {
-          throw new Error("Failed to register order on server");
-        }
-
-        const data = await response.json();
-        console.log("Order registration response:", data);
         
         setSuccessOrderNum(orderNum);
         setSuccessOrder(true);
       } catch (err) {
-        console.error("Order submission API error, falling back locally:", err);
-        // Fallback gracefully so checkout is still completed successfully in UX
-        setSuccessOrderNum(orderNum);
-        setSuccessOrder(true);
+        setSubmissionError(err instanceof TypeError || (err instanceof Error && err.name === 'TimeoutError')
+          ? 'We could not confirm your submission. Your basket is unchanged. Before retrying, contact the shop if you think the order may have been received.'
+          : err instanceof Error ? err.message : 'Your order could not be submitted. Please try again.');
       } finally {
         setIsSubmitting(false);
       }
@@ -125,13 +111,13 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
             <ShieldCheck className="w-6 h-6 animate-pulse" />
           </div>
           <span className="font-sans text-[10px] uppercase tracking-wider text-emerald-600 font-bold">
-            Order Confirmed & Scheduled!
+            Order Request Submitted
           </span>
           <h2 className="font-display text-4xl font-light text-primary-dark">
             Taste is on the Way
           </h2>
           <p className="font-sans text-xs md:text-sm text-stone-500 max-w-lg mt-1 leading-relaxed">
-            We have registered your artisanal request! Our kitchen will source, prepare, stone-grind and hand-roll your custom selection meticulously.
+            Your order request has been submitted. We will contact you by telephone to confirm preparation and collection. No payment has been taken.
           </p>
         </div>
 
@@ -447,6 +433,11 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
 
             {/* ORDER CTA & DISCLAIMERS */}
             <div className="pt-6 border-t border-stone-100 space-y-4">
+              {submissionError && (
+                <p role="alert" className="text-xs text-red-700 bg-red-50 border border-red-100 rounded p-3 leading-relaxed">
+                  {submissionError}
+                </p>
+              )}
               
               {cart.length > 0 ? (
                 <button
