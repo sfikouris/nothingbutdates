@@ -26,8 +26,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
   const [submissionError, setSubmissionError] = useState('');
 
   const subtotal = cart.reduce((acc, item) => acc + item.priceTotal, 0);
-  const shippingFee = subtotal >= 30 ? 0.0 : 4.5;
-  const grandTotal = subtotal + shippingFee;
+  const grandTotal = subtotal;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -74,7 +73,6 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
           ...formData,
           cart,
           subtotal,
-          shippingFee,
           grandTotal,
           orderNumber: orderNum,
         });
@@ -145,10 +143,6 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
             <div className="flex justify-between">
               <span className="text-stone-500">Subtotal</span>
               <span className="text-stone-700">€{subtotal.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-stone-500">Shipping (Carbon-Neutral)</span>
-              <span className="text-stone-700 font-medium">{shippingFee === 0 ? 'FREE' : `€${shippingFee.toFixed(2)}`}</span>
             </div>
             <div className="flex justify-between font-sans text-sm font-semibold text-primary-dark pt-2 border-t border-stone-200 mt-2">
               <span>Total Payment on Location</span>
@@ -276,12 +270,6 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
               <div className="flex justify-between text-stone-500">
                 <span>Subtotal</span>
                 <span className="font-medium text-stone-850">€{subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-stone-500">
-                <span>Shipping (Estimated)</span>
-                <span className="font-medium text-stone-850">
-                  {shippingFee === 0 ? 'FREE' : `€${shippingFee.toFixed(2)}`}
-                </span>
               </div>
               <div className="flex justify-between font-sans text-sm font-semibold text-stone-900 pt-3 border-t border-stone-100">
                 <span>Total Due</span>

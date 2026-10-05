@@ -3,7 +3,6 @@ import type { OrderDetails, SelectedItem } from './types';
 interface OrderSubmission extends OrderDetails {
   cart: SelectedItem[];
   subtotal: number;
-  shippingFee: number;
   grandTotal: number;
   orderNumber: string;
 }
@@ -31,7 +30,6 @@ export async function submitOrder(endpoint: string | undefined, order: OrderSubm
         `${item.name} (${item.weight}) × ${item.qty} — €${item.priceTotal.toFixed(2)}`
       ).join('\n'),
       subtotal: `€${order.subtotal.toFixed(2)}`,
-      shippingFee: `€${order.shippingFee.toFixed(2)}`,
       grandTotal: `€${order.grandTotal.toFixed(2)}`,
       payment: 'Pay on collection; no payment taken online',
     }),

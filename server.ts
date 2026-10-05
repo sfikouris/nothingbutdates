@@ -17,7 +17,8 @@ async function startServer() {
   // API endpoint: Handle manual checkout submission and send email to owner
   app.post("/api/order", async (req, res) => {
     try {
-      const { fullName, telephone, email, pickupDate, specialRequests, cart, subtotal, shippingFee, grandTotal, orderNumber } = req.body;
+      const { fullName, telephone, email, pickupDate, specialRequests, cart, subtotal, orderNumber } = req.body;
+      const grandTotal = subtotal;
 
       if (!fullName || !telephone || !pickupDate) {
         res.status(400).json({ error: "Missing required checkout details: fullName, telephone, and pickupDate are required." });
@@ -105,10 +106,6 @@ async function startServer() {
               <tr>
                 <td style="font-size: 13px; color: #666; padding: 4px 0;">Subtotal</td>
                 <td style="font-size: 13px; color: #444; padding: 4px 0; text-align: right;">€${subtotal.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td style="font-size: 13px; color: #666; padding: 4px 0;">Shipping Feed</td>
-                <td style="font-size: 13px; color: #444; padding: 4px 0; text-align: right;">${shippingFee === 0 ? 'FREE' : `€${shippingFee.toFixed(2)}`}</td>
               </tr>
               <tr style="font-size: 16px; font-weight: bold; color: #1c1917;">
                 <td style="padding: 12px 0 0 0;">Grand Total</td>

@@ -10,7 +10,7 @@ const order = {
   pickupDate: '2027-01-10', specialRequests: 'Test order',
   cart: [{ id: 'box-250g', name: '250g Box', type: 'box' as const,
     weight: '9 pieces', qty: 2, priceSingle: 10, priceTotal: 20 }],
-  subtotal: 20, shippingFee: 4.5, grandTotal: 24.5, orderNumber: 'NBD-TEST',
+  subtotal: 20, grandTotal: 20, orderNumber: 'NBD-TEST',
 };
 const endpoint = 'https://formspree.io/f/abcdefgh';
 
@@ -32,7 +32,8 @@ test('accepted submission includes readable basket and totals; omits blank reply
     assert.equal(options?.method, 'POST');
     const body = JSON.parse(options?.body as string);
     assert.equal(body.items, '250g Box (9 pieces) × 2 — €20.00');
-    assert.equal(body.grandTotal, '€24.50');
+    assert.equal(body.grandTotal, '€20.00');
+    assert.equal('shippingFee' in body, false);
     assert.equal(body.telephone, order.telephone);
     assert.equal(body.orderNumber, order.orderNumber);
     assert.equal('email' in body, false);

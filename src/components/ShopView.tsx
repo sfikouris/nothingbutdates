@@ -369,12 +369,6 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
                 <span className="text-stone-400">Subtotal</span>
                 <span className="font-semibold text-stone-900">€{aggregateCartTotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between font-sans">
-                <span className="text-stone-400">Shipping</span>
-                <span className="text-stone-500 font-semibold">
-                  {aggregateCartTotal >= 30 ? 'FREE' : 'Calculated next step'}
-                </span>
-              </div>
               <div className="flex justify-between font-sans text-sm font-semibold pt-2 border-t border-stone-55">
                 <span>Order Total</span>
                 <span>€{aggregateCartTotal.toFixed(2)}</span>
