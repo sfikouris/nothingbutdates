@@ -75,8 +75,8 @@ export default function App() {
             type: 'bar',
             weight: '40G SNACK BAR',
             qty,
-            priceSingle: 4.5,
-            priceTotal: qty * 4.5,
+            priceSingle: 2,
+            priceTotal: qty * 2,
           },
         ];
       }

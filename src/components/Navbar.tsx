@@ -1,4 +1,5 @@
-import { ShoppingBag, Eye, Heart, Leaf } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import dateHeader from '../assets/dateheader.jpg';
 import { ViewName, SelectedItem } from '../types';
 
 interface NavbarProps {
@@ -19,7 +20,12 @@ export default function Navbar({ currentView, onViewChange, cart }: NavbarProps)
           className="flex items-center gap-2.5 group cursor-pointer text-left"
           id="nav-logo"
         >
-          <Leaf className="w-4 h-4 text-medjool-amber transition-transform duration-500 ease-out group-hover:scale-110" />
+          <img
+            src={dateHeader}
+            alt=""
+            aria-hidden="true"
+            className="h-10 w-10 shrink-0 object-contain"
+          />
           <span className="font-display text-2xl font-medium text-primary-dark tracking-wide">
             Nothing But Dates
           </span>

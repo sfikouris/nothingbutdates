@@ -80,7 +80,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
               <span className="text-stone-300 italic">Naturally Sweet.</span>
             </h1>
             <p className="font-sans text-xs md:text-sm text-stone-300 max-w-xl leading-relaxed">
-              Discover our signature Tahini Nut Bites. A sophisticated blend of organic select Medjool dates and creamy stone-ground tahini paste, slow-crafted in small batches for the conscious epicurean.
+              Discover our signature Tahini Nut Bites. A sophisticated blend of organic select Medjool dates and creamy tahini paste, slow-crafted in small batches for those who appreciate fine flavours.
             </p>
           </div>
 
@@ -124,7 +124,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
                     THE CORE
                   </span>
                   <p className="font-sans text-stone-500 self-center leading-relaxed">
-                    100% Organic Medjool Dates sourced from sustainable groves.
+                    100% organic medjool dates sourced from sustainable groves.
                   </p>
                 </div>
                 <div className="flex gap-3 text-xs">
@@ -132,7 +132,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
                     THE TWIST
                   </span>
                   <p className="font-sans text-stone-500 self-center leading-relaxed">
-                    Stone-ground Ethiopian Tahini sesame seed cream for a savory depth.
+                    Velvety tahini sesame seed cream for a savory depth.
                   </p>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
                     <span className="font-sans text-sm font-semibold text-stone-900">€{box.price.toFixed(2)}</span>
                   </div>
                   <p className="font-sans text-[11px] text-stone-500">
-                    Approx. {box.bitesCount} premium signature hand-rolled bites
+                    {box.bitesCount} premium signature hand-rolled bites
                   </p>
                 </button>
               ))}
@@ -268,7 +268,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
                       Gluten-Free
                     </span>
                     <span className="bg-stone-50 text-stone-600 text-[9px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded">
-                      No Soy lecithin
+                      Refined Sugar-Free
                     </span>
                   </div>
                 </div>
@@ -412,10 +412,10 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="bg-white p-6 rounded-lg border border-stone-200/40 flex flex-col items-center gap-2">
-            <span className="text-lg">🌿</span>
-            <h5 className="font-sans text-xs uppercase tracking-wider font-semibold text-primary-dark">Sustainably Sourced</h5>
+            <span className="text-lg">🤎</span>
+            <h5 className="font-sans text-xs uppercase tracking-wider font-semibold text-primary-dark">Mum-Made at home</h5>
             <p className="font-sans text-xs text-stone-500 max-w-xs leading-relaxed">
-              We partner directly with family date growers in humid alluvial plains that practice chemical-free agriculture.
+              Made with love in our home kitchen, using simple ingredients and a little mum-made magic.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg border border-stone-200/40 flex flex-col items-center gap-2">
@@ -423,13 +423,6 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
             <h5 className="font-sans text-xs uppercase tracking-wider font-semibold text-primary-dark">Artisanal Method</h5>
             <p className="font-sans text-xs text-stone-500 max-w-xs leading-relaxed">
               Continuous hand-inspecting before packing. Zero factory lines, heavy presses, or high heat.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg border border-stone-200/40 flex flex-col items-center gap-2">
-            <span className="text-lg">♻️</span>
-            <h5 className="font-sans text-xs uppercase tracking-wider font-semibold text-primary-dark">Compostable Pack</h5>
-            <p className="font-sans text-xs text-stone-500 max-w-xs leading-relaxed">
-              Fully biodegradable wraps made of corn starch and soy ink. Disappears without trace in backyard soil.
             </p>
           </div>
         </div>

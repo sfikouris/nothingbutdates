@@ -6,26 +6,30 @@ export const BOX_OPTIONS: BoxOption[] = [
   { id: 'box-500g', weight: '500g Box', price: 20.0, bitesCount: 18, isPopular: true },
   { id: 'box-700g', weight: '700g Box', price: 28.0, bitesCount: 24 },
   { id: 'box-750g', weight: '750g Box', price: 30.0, bitesCount: 26 },
-  { id: 'box-1kg', weight: '1kg Heritage Box', price: 40.0, bitesCount: 36 },
+  { id: 'box-1kg',  weight: '1kg Box', price: 40.0, bitesCount: 36 },
 ];
 
 export const INGREDIENTS_LIST = [
   'Organic Medjool Dates',
-  'Stone-Ground Ethiopian Tahini (Sesame)',
-  'Activated Walnuts',
+  'Tahini Creame (Sesame)',
+  'Raw Walnuts',
   'Raw Pistachios',
-  'Black & White Sesame Seeds',
-  'Pinch of Hand-Harvested Sea Salt'
+  'Roasted Hazelnuts',
+  'Mix of Raw & Roasted Almonds',
+  'Pinch of Hand-Harvested Sea Salt',
+  'Cocoa Powder',
+  'Coconut Oil',
+  'Maple Syrup'
 ];
 
 export const NUTRITION_FACTS = {
-  servingSize: '1 Bite (approx. 22g)',
-  calories: '86 kcal',
-  fat: { total: '3.8g', saturated: '0.4g' },
-  carbs: { total: '11.5g', sugar: '9.2g' },
-  protein: '1.9g',
-  fiber: '1.6g',
-  sodium: '12mg'
+  servingSize: '1 Bite (approx. 29 g)',
+  calories: '134 kcal',
+  fat: { total: '9.2 g', saturated: '2.35 g' },
+  carbs: { total: '12.5 g', sugar: '8.3 g' },
+  protein: '3.1 g',
+  fiber: '2.2 g',
+  sodium: '0.01 g'
 };
 
 export const IMAGES = {
