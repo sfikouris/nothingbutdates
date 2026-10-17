@@ -405,12 +405,12 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
 
       </section>
 
-      {/* 4. THREE CONCENTRIC ACCENTS BANNER AT FOOTER */}
+      {/* 4. BRAND PROMISES BANNER AT FOOTER */}
       <section className="bg-stone-50 py-16 px-6 md:px-12 border-t border-stone-200/50 text-center">
         <p className="font-display italic text-lg sm:text-2xl font-light max-w-2xl mx-auto mb-10 text-primary-dark leading-relaxed">
           "Hand-rolled in small batches to ensure the perfect chewy texture and balanced crunch in every single bite."
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
           <div className="bg-white p-6 rounded-lg border border-stone-200/40 flex flex-col items-center gap-2">
             <span className="text-lg">🤎</span>
             <h5 className="font-sans text-xs uppercase tracking-wider font-semibold text-primary-dark">Mum-Made at home</h5>

@@ -1,5 +1,5 @@
 import { ShoppingBag } from 'lucide-react';
-import dateHeader from '../assets/dateheader.jpg';
+import dateHeader from '../assets/dateheader-footer.png';
 import { ViewName, SelectedItem } from '../types';
 
 interface NavbarProps {
