@@ -73,7 +73,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
           
           <div className="max-w-2xl flex flex-col gap-4">
             <span className="inline-block bg-white/10 text-stone-200 font-sans text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-sm w-max">
-              Est. 2024 • Hand-Rolled
+              Est. 2025 • Hand-Rolled
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-light tracking-tight leading-none text-white">
               Artisanal Energy,<br />
