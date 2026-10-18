@@ -188,7 +188,7 @@ export default function ShopView({ cart, onAddBox, onAddBars, onRemoveItem, onVi
 
             <div className="flex items-center gap-6 justify-between sm:justify-end">
               <span className="font-sans text-sm font-semibold text-stone-900">
-                €4.50
+                €2.00
               </span>
               <div className="flex items-center gap-3 bg-stone-100 rounded-md p-1 border border-stone-200/40">
                 <button
