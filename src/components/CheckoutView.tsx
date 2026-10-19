@@ -42,16 +42,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
     if (!formData.fullName.trim()) errors.fullName = 'Full Name is required';
     if (!formData.telephone.trim()) errors.telephone = 'Telephone is required';
     
-    // Check pickupDate if set is at least 3 days ahead
-    if (formData.pickupDate) {
-      const selectedDate = new Date(formData.pickupDate);
-      const today = new Date();
-      const differenceInTime = selectedDate.getTime() - today.getTime();
-      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-      if (differenceInDays < 2.5) {
-        errors.pickupDate = 'Orders require at least 3 days of preparation to roll with fresh organic batches.';
-      }
-    } else {
+    if (!formData.pickupDate) {
       errors.pickupDate = 'Pickup date is required to secure kitchen schedule.';
     }
 
@@ -151,7 +142,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
           </div>
 
           <div className="bg-white border border-stone-200/85 p-4 rounded text-xs font-sans text-stone-600 space-y-1.5 leading-relaxed">
-            <p>📅 <strong>Target Collection Date:</strong> {formData.pickupDate ? new Date(formData.pickupDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : 'Ready in 3 days'}</p>
+            <p>📅 <strong>Target Collection Date:</strong> {formData.pickupDate ? new Date(formData.pickupDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : 'To be confirmed'}</p>
             <p>☎ <strong>Recipient Contact Phone:</strong> {formData.telephone}</p>
             <p>💬 <strong>Collection Details:</strong> The store owner will contact your telephone directly to arrange collection coordinates.</p>
           </div>
@@ -393,11 +384,7 @@ export default function CheckoutView({ cart, onClearCart, onViewChange }: Checko
                       <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                       <span>{formErrors.pickupDate}</span>
                     </div>
-                  ) : (
-                    <p className="text-[11px] text-[#83746f] italic block mt-0.5">
-                      Please note: Orders require at least 3 days to be prepared and hand-rolled with proper care.
-                    </p>
-                  )}
+                  ) : null}
                 </div>
 
                 {/* Special commentary */}
